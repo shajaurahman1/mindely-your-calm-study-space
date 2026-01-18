@@ -26,7 +26,7 @@ const Landing = () => {
           <img 
             src={logo} 
             alt="Mindely" 
-            className="h-20 md:h-28 lg:h-36 mx-auto object-contain drop-shadow-[0_0_30px_hsl(145_80%_42%/0.5)]"
+            className="h-32 md:h-44 lg:h-56 mx-auto object-contain drop-shadow-[0_0_40px_hsl(145_80%_42%/0.6)]"
           />
         </motion.div>
 
@@ -77,6 +77,16 @@ const Landing = () => {
           Your calm study companion • No login required
         </motion.p>
       </motion.div>
+
+      {/* Credits */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-4 right-4 text-xs text-muted-foreground/40"
+      >
+        Made by Mohammed Shajau Rahman
+      </motion.p>
     </div>
   );
 };
