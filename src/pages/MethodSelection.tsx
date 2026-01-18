@@ -11,8 +11,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3,
+      staggerChildren: 0.04,
+      delayChildren: 0.1,
     },
   },
 };
@@ -27,18 +27,17 @@ const MethodSelection = () => {
       <div className="relative z-10 px-6 py-8 md:py-12">
         {/* Header */}
         <motion.header
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="max-w-6xl mx-auto mb-12"
         >
           <div className="flex items-center justify-between">
             <motion.button
               onClick={() => navigate("/")}
-              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-all duration-500 ease-out"
-              whileHover={{ x: -4 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-all duration-200 ease-out"
+              whileHover={{ x: -3, transition: { duration: 0.15 } }}
+              whileTap={{ scale: 0.95, transition: { duration: 0.1 } }}
             >
               <ArrowLeft className="w-5 h-5" />
               <span className="hidden sm:inline">Back</span>
@@ -50,9 +49,8 @@ const MethodSelection = () => {
               alt="Mindely" 
               className="h-16 md:h-20 lg:h-24 object-contain cursor-pointer drop-shadow-[0_0_30px_hsl(145_80%_42%/0.5)]"
               onClick={() => navigate("/")}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.15 } }}
+              whileTap={{ scale: 0.97, transition: { duration: 0.1 } }}
             />
             
             <div className="w-16" /> {/* Spacer for centering */}
@@ -61,9 +59,9 @@ const MethodSelection = () => {
 
         {/* Title Section */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ delay: 0.05, duration: 0.35, ease: "easeOut" }}
           className="text-center max-w-2xl mx-auto mb-14"
         >
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -100,7 +98,7 @@ const MethodSelection = () => {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ delay: 0.5, duration: 0.4, ease: "easeOut" }}
           className="text-center text-muted-foreground/60 text-sm mt-20"
         >
           Every study session is a step forward 🌱
@@ -111,7 +109,7 @@ const MethodSelection = () => {
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+        transition={{ delay: 0.6, duration: 0.4 }}
         className="absolute bottom-4 right-4 text-xs text-muted-foreground/40 z-10"
       >
         Made by Mohammed Shajau Rahman

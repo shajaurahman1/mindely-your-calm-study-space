@@ -16,15 +16,15 @@ const MethodDetail = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-center"
         >
           <h1 className="text-2xl font-bold text-foreground mb-4">Method not found</h1>
           <button
             onClick={() => navigate("/methods")}
-            className="text-primary hover:underline transition-all duration-500"
+            className="text-primary hover:underline transition-all duration-200"
           >
             Go back to methods
           </button>
@@ -42,18 +42,17 @@ const MethodDetail = () => {
       <div className="relative z-10 px-6 py-8 md:py-12">
         {/* Header */}
         <motion.header
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="max-w-4xl mx-auto mb-10"
         >
           <div className="flex items-center justify-between">
             <motion.button
               onClick={() => navigate("/methods")}
-              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-all duration-500 ease-out"
-              whileHover={{ x: -4 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-all duration-200 ease-out"
+              whileHover={{ x: -3, transition: { duration: 0.15 } }}
+              whileTap={{ scale: 0.95, transition: { duration: 0.1 } }}
             >
               <ArrowLeft className="w-5 h-5" />
               <span className="hidden sm:inline">All Methods</span>
@@ -65,9 +64,8 @@ const MethodDetail = () => {
               alt="Mindely" 
               className="h-16 md:h-20 lg:h-24 object-contain cursor-pointer drop-shadow-[0_0_30px_hsl(145_80%_42%/0.5)]"
               onClick={() => navigate("/")}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.15 } }}
+              whileTap={{ scale: 0.97, transition: { duration: 0.1 } }}
             />
             
             <div className="w-20" />
@@ -77,16 +75,16 @@ const MethodDetail = () => {
         <div className="max-w-4xl mx-auto">
           {/* Method Header */}
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ delay: 0.05, duration: 0.35, ease: "easeOut" }}
             className="text-center mb-12"
           >
             <motion.div 
               className="w-18 h-18 rounded-2xl bg-primary/15 flex items-center justify-center mx-auto mb-6"
-              initial={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ delay: 0.08, duration: 0.25, ease: "easeOut" }}
             >
               <Icon className="w-9 h-9 text-primary" />
             </motion.div>
@@ -102,9 +100,9 @@ const MethodDetail = () => {
             {/* Timer Section */}
             {method.hasTimer && (
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+                transition={{ delay: 0.1, duration: 0.35, ease: "easeOut" }}
               >
                 <Timer 
                   focusMinutes={method.focusMinutes} 
@@ -117,9 +115,9 @@ const MethodDetail = () => {
 
             {/* Info Cards */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ delay: 0.15, duration: 0.35, ease: "easeOut" }}
               className={`space-y-6 ${!method.hasTimer ? "md:col-span-2 max-w-2xl mx-auto" : ""}`}
             >
               {/* How it works */}
@@ -132,9 +130,9 @@ const MethodDetail = () => {
                     <motion.li 
                       key={index} 
                       className="flex items-start gap-3"
-                      initial={{ opacity: 0, x: -15 }}
+                      initial={{ opacity: 0, x: -8 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 + index * 0.1, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      transition={{ delay: 0.2 + index * 0.04, duration: 0.25, ease: "easeOut" }}
                     >
                       <span className="w-6 h-6 rounded-full bg-primary/20 text-primary text-xs font-semibold flex items-center justify-center flex-shrink-0 mt-0.5">
                         {index + 1}
@@ -157,9 +155,9 @@ const MethodDetail = () => {
                     <motion.span
                       key={index}
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm"
-                      initial={{ opacity: 0, scale: 0.85 }}
+                      initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.6 + index * 0.1, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      transition={{ delay: 0.25 + index * 0.04, duration: 0.2, ease: "easeOut" }}
                     >
                       <CheckCircle className="w-3.5 h-3.5" />
                       {item}
@@ -174,7 +172,7 @@ const MethodDetail = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ delay: 0.4, duration: 0.35, ease: "easeOut" }}
             className="text-center"
           >
             <p className="text-muted-foreground/60 text-sm">
@@ -188,7 +186,7 @@ const MethodDetail = () => {
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+        transition={{ delay: 0.5, duration: 0.35 }}
         className="absolute bottom-4 right-4 text-xs text-muted-foreground/40 z-10"
       >
         Made by Mohammed Shajau Rahman
