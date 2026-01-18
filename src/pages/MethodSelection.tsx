@@ -44,11 +44,11 @@ const MethodSelection = () => {
               <span className="hidden sm:inline">Back</span>
             </motion.button>
             
-            {/* Logo - bigger and directly on gradient */}
+            {/* Logo - much bigger and directly on gradient */}
             <motion.img 
               src={logo} 
               alt="Mindely" 
-              className="h-12 md:h-14 lg:h-16 object-contain cursor-pointer drop-shadow-[0_0_25px_hsl(145_80%_42%/0.4)]"
+              className="h-16 md:h-20 lg:h-24 object-contain cursor-pointer drop-shadow-[0_0_30px_hsl(145_80%_42%/0.5)]"
               onClick={() => navigate("/")}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
@@ -106,6 +106,16 @@ const MethodSelection = () => {
           Every study session is a step forward 🌱
         </motion.p>
       </div>
+
+      {/* Credits */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-4 right-4 text-xs text-muted-foreground/40 z-10"
+      >
+        Made by Mohammed Shajau Rahman
+      </motion.p>
     </div>
   );
 };
