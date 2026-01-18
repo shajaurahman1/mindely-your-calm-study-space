@@ -122,23 +122,23 @@ const Timer = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 25 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="glass-card rounded-3xl p-8 max-w-md mx-auto"
     >
       {/* Session Status */}
       <AnimatePresence mode="wait">
         <motion.div
           key={isBreak ? "break" : "focus"}
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          exit={{ opacity: 0, y: 15 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center mb-6"
         >
           <span
-            className={`inline-block px-4 py-2 rounded-full text-sm font-medium transition-all duration-500 ${
+            className={`inline-block px-4 py-2 rounded-full text-sm font-medium transition-all duration-700 ease-out ${
               isBreak
                 ? "bg-blue-500/20 text-blue-400"
                 : "bg-primary/20 text-primary"
@@ -154,12 +154,12 @@ const Timer = ({
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="flex justify-center gap-2 mb-8"
         >
           <button
             onClick={() => toggleMode(false)}
-            className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+            className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-500 ease-out ${
               !isBreak 
                 ? "bg-primary text-primary-foreground shadow-lg" 
                 : "bg-muted text-muted-foreground hover:bg-muted/80"
@@ -169,7 +169,7 @@ const Timer = ({
           </button>
           <button
             onClick={() => toggleMode(true)}
-            className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+            className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-500 ease-out ${
               isBreak 
                 ? "bg-blue-500 text-white shadow-lg" 
                 : "bg-muted text-muted-foreground hover:bg-muted/80"
@@ -202,29 +202,29 @@ const Timer = ({
             strokeDasharray={628}
             initial={{ strokeDashoffset: 628 }}
             animate={{ strokeDashoffset: 628 - (progress / 100) * 628 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             style={{
               filter: isBreak 
-                ? "drop-shadow(0 0 10px hsl(210 100% 60% / 0.4))"
-                : "drop-shadow(0 0 10px hsl(var(--primary) / 0.4))",
+                ? "drop-shadow(0 0 12px hsl(210 100% 60% / 0.5))"
+                : "drop-shadow(0 0 12px hsl(var(--primary) / 0.5))",
             }}
           />
         </svg>
         <motion.div 
           className="absolute inset-0 flex flex-col items-center justify-center"
           animate={{ 
-            scale: isRunning ? [1, 1.02, 1] : 1
+            scale: isRunning ? [1, 1.015, 1] : 1
           }}
           transition={{ 
-            duration: 2, 
+            duration: 2.5, 
             repeat: isRunning ? Infinity : 0,
-            ease: "easeInOut"
+            ease: [0.25, 0.46, 0.45, 0.94]
           }}
         >
           <span className="text-5xl font-bold text-foreground tracking-tight">
             {formatTime(timeLeft)}
           </span>
-          <span className={`text-sm mt-2 transition-colors duration-500 ${
+          <span className={`text-sm mt-2 transition-all duration-700 ease-out ${
             isBreak ? "text-blue-400" : "text-muted-foreground"
           }`}>
             {isBreak ? "Take a break" : label}
@@ -234,23 +234,29 @@ const Timer = ({
 
       {/* Controls */}
       <div className="flex items-center justify-center gap-4 mb-6">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={isRunning ? handleStop : handleReset}
-          className="w-12 h-12 rounded-full bg-muted hover:bg-muted/80 transition-all duration-300"
+        <motion.div
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.92 }}
+          transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          {isRunning ? <Square className="w-5 h-5" /> : <RotateCcw className="w-5 h-5" />}
-        </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={isRunning ? handleStop : handleReset}
+            className="w-12 h-12 rounded-full bg-muted hover:bg-muted/80 transition-all duration-500 ease-out"
+          >
+            {isRunning ? <Square className="w-5 h-5" /> : <RotateCcw className="w-5 h-5" />}
+          </Button>
+        </motion.div>
         
         <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.2 }}
+          whileHover={{ scale: 1.06, y: -2 }}
+          whileTap={{ scale: 0.94 }}
+          transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <Button
             onClick={() => setIsRunning(!isRunning)}
-            className={`w-16 h-16 rounded-full text-primary-foreground shadow-lg transition-all duration-500 ${
+            className={`w-16 h-16 rounded-full text-primary-foreground shadow-lg transition-all duration-700 ease-out ${
               isBreak 
                 ? "bg-blue-500 hover:bg-blue-600" 
                 : "bg-primary hover:bg-primary/90"
@@ -258,36 +264,42 @@ const Timer = ({
             style={{
               boxShadow: isRunning 
                 ? isBreak 
-                  ? "0 0 30px hsl(210 100% 60% / 0.4)" 
-                  : "0 0 30px hsl(145 80% 42% / 0.4)"
+                  ? "0 0 40px hsl(210 100% 60% / 0.5)" 
+                  : "0 0 40px hsl(145 80% 42% / 0.5)"
                 : isBreak
-                  ? "0 4px 20px hsl(210 100% 60% / 0.3)"
-                  : "0 4px 20px hsl(145 80% 42% / 0.3)",
+                  ? "0 6px 25px hsl(210 100% 60% / 0.4)"
+                  : "0 6px 25px hsl(145 80% 42% / 0.4)",
             }}
           >
             {isRunning ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-1" />}
           </Button>
         </motion.div>
         
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setSoundEnabled(!soundEnabled)}
-          className="w-12 h-12 rounded-full bg-muted hover:bg-muted/80 transition-all duration-300"
+        <motion.div
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.92 }}
+          transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          {soundEnabled ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
-        </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setSoundEnabled(!soundEnabled)}
+            className="w-12 h-12 rounded-full bg-muted hover:bg-muted/80 transition-all duration-500 ease-out"
+          >
+            {soundEnabled ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
+          </Button>
+        </motion.div>
       </div>
 
       {/* Encouraging Message */}
       <AnimatePresence mode="wait">
         <motion.p
           key={message}
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className={`text-center text-sm transition-colors duration-500 ${
+          exit={{ opacity: 0, y: -12 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className={`text-center text-sm transition-all duration-700 ease-out ${
             isBreak ? "text-blue-400/80" : "text-muted-foreground"
           }`}
         >

@@ -11,30 +11,30 @@ const Landing = () => {
       <AnimatedBackground />
       
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="relative z-10 text-center max-w-2xl mx-auto"
       >
         {/* Logo - sits directly on gradient, no container */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-          className="mb-12"
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="mb-14"
         >
           <img 
             src={logo} 
             alt="Mindely" 
-            className="h-16 md:h-20 lg:h-24 mx-auto object-contain drop-shadow-[0_0_20px_hsl(145_80%_42%/0.4)]"
+            className="h-20 md:h-28 lg:h-36 mx-auto object-contain drop-shadow-[0_0_30px_hsl(145_80%_42%/0.5)]"
           />
         </motion.div>
 
         {/* Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+          transition={{ delay: 0.4, duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight"
         >
           Let's start{" "}
@@ -43,25 +43,25 @@ const Landing = () => {
 
         {/* Sub-text */}
         <motion.p
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-          className="text-lg md:text-xl text-muted-foreground mb-12 max-w-lg mx-auto leading-relaxed"
+          transition={{ delay: 0.6, duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="text-lg md:text-xl text-muted-foreground mb-14 max-w-lg mx-auto leading-relaxed"
         >
           Choose how you want to study. No pressure. No tracking.
         </motion.p>
 
         {/* CTA Button */}
         <motion.button
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
-          whileHover={{ scale: 1.03 }}
+          transition={{ delay: 0.8, duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+          whileHover={{ scale: 1.04, y: -2 }}
           whileTap={{ scale: 0.97 }}
           onClick={() => navigate("/methods")}
-          className="px-10 py-4 bg-primary text-primary-foreground rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-500 animate-glow-pulse"
+          className="px-12 py-5 bg-primary text-primary-foreground rounded-full text-lg font-semibold shadow-lg hover:shadow-2xl transition-all duration-700 ease-out animate-glow-pulse"
           style={{
-            boxShadow: "0 4px 30px hsl(145 80% 42% / 0.4)",
+            boxShadow: "0 8px 40px hsl(145 80% 42% / 0.45)",
           }}
         >
           Let's start learning
@@ -71,8 +71,8 @@ const Landing = () => {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
-          className="mt-16 text-sm text-muted-foreground/60"
+          transition={{ delay: 1.4, duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="mt-20 text-sm text-muted-foreground/60"
         >
           Your calm study companion • No login required
         </motion.p>
